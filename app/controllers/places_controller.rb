@@ -10,6 +10,8 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
+    @review = Review.new
+    @reviews = @place.reviews
   end
 
   # GET /places/new
