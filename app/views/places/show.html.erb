@@ -25,5 +25,29 @@
   <%= @place.website %>
 </p>
 
+<p>
+  <%= @place.longitude %>
+  <%= @place.latitude %>
+</p>
+
+<div id="map" style="width: 230px; height:230px"></div>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
+
+<script type="text/javascript">
+  var map;
+  var myCenter = {lat: parseFloat('<%= @place.latitude%>'), lng: parseFloat('<%=@place.longitude%>')};
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: myCenter,
+      zoom: 8
+    });
+    var marker = new google.maps.Marker({
+      position: myCenter,
+      map: map,
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQdnMwo2hWa6vygNP37zQfZ25V0Tsork&callback=initMap"
+async defer></script>
