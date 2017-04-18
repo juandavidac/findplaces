@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   validates_presence_of :score
 
   after_save :calculate_average
+  after_destroy :calculate_average
 
   def calculate_average
     a= self.place.average_rating
