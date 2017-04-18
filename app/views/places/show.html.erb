@@ -30,3 +30,14 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHQdnMwo2hWa6vygNP37zQfZ25V0Tsork&callback=initMap"
 async defer></script>
+
+<% @reviews.each do |review| %>
+<script>
+  $(".score_<%=review.id%>").raty({
+    starOn: "<%= image_path('star-on.png') %>",
+    starOff: "<%= image_path('star-off.png') %>",
+    score: "<%= review.score%>",
+    readOnly: true
+  });
+</script>
+<% end %>
